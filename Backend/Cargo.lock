@@ -31,6 +31,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 name = "backend"
 version = "0.1.0"
 dependencies = [
+ "encoding 0.2.33 (registry+https://github.com/rust-lang/crates.io-index)",
  "handlebars 2.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "pdf_form 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "rocket 0.4.2 (registry+https://github.com/rust-lang/crates.io-index)",

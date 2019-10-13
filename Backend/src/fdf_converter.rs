@@ -30,14 +30,15 @@ impl FdfConverter {
         }
     }
 
-    pub fn add_data<'a>(&'a mut self, field: &str , text: &str) -> &'a mut FdfConverter {
+    pub fn add_data(mut self, field: &str , text: &str) -> FdfConverter {
         let to_push = format!("<< \n/V ({0})\n/T ({1})\n>>\n", text, field);
         self.content.push_str(to_push.as_str());
         self
     }
 
-    pub fn finish(&self) -> String {
+    pub fn finish(self) -> String {
         TEMPLATE.replace("{{content}}", self.content.as_str())
+
     }
 
 }
