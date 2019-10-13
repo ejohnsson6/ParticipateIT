@@ -6,6 +6,7 @@ mod fdf_converter;
 
 use rocket_contrib::json::Json;
 use serde_derive::{Serialize,Deserialize};
+use std::fs;
 // use FdfConverter::FdfConverter;
 
 
@@ -25,13 +26,19 @@ struct Participant {
 #[post("/jsontopdf", data = "<part_list>")]
 fn part_list(part_list: Json<PartList>) -> String {
     let json_data = part_list.into_inner();
+
+    let fdf_data =fdf_converter::FdfConverter::new()
+    .add_data("namn1", json_data.date.as_str())
+    .add_data("namn2", json_data.arrangement.as_str())
+    .finish();
+
     
+    fs::write("fdfdata.fdf",fdf_data.as_bytes());
+
     println!("Received List with {0} items", json_data.part_list.len());
 
    return String::from("Test");
 }
 fn main() {
-    let _fdf_con = fdf_converter::FdfConverter::new().add_data("content1", "heh");
-
     rocket::ignite().mount("/", routes![part_list]).launch();
 }
