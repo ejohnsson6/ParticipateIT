@@ -1,5 +1,5 @@
 [package]
-name = "Backend"
+name = "backend"
 version = "0.1.0"
 authors = ["Swexbe <erik@erikjohnsson.se>"]
 edition = "2018"
@@ -11,3 +11,4 @@ rocket = "0.4.2"
 rocket_contrib = "0.4.2"
 serde = "1.0.101"
 serde_derive = "1.0.101"
+pdf_form = "0.2.0"
