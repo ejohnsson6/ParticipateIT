@@ -27,10 +27,11 @@ fn part_list(part_list: Json<PartList>) -> String {
     let json_data = part_list.into_inner();
     
     println!("Received List with {0} items", json_data.part_list.len());
-    let fdf_con = fdf_converter::FdfConverter::new();
 
    return String::from("Test");
 }
 fn main() {
+    let _fdf_con = fdf_converter::FdfConverter::new().add_data("content1", "heh");
+
     rocket::ignite().mount("/", routes![part_list]).launch();
 }
